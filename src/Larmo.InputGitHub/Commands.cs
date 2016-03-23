@@ -1,12 +1,14 @@
-﻿namespace Larmo.Input.GitHub
+﻿using Larmo.Input.GitHub.Models;
+
+namespace Larmo.Input.GitHub.Commands
 {
-    public class ReceiveCommand
+    public class ReceivePush
     {
         private readonly string _project;
         private readonly string _eventName;
-        private readonly string _data;
+        private readonly Push _data;
 
-        public ReceiveCommand(string project, string eventName, string data)
+        public ReceivePush(string project, string eventName, Push data)
         {
             _project = project;
             _eventName = eventName;

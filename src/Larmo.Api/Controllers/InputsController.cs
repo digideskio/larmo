@@ -31,7 +31,17 @@ namespace Larmo.Api.Controllers
             
             var eventName = request.Headers.GetValues(eventNameHeader).FirstOrDefault();
             var payload = await request.Content.ReadAsStringAsync();
-            
+
+            switch (eventName)
+            {
+                case GitHub.EventName.Push:
+                    new GitHub.Commands.ReceivePush(project, eventName, (GitHub.Models.Push)payload);
+                    break;
+                default:
+                    return Request.CreateErrorResponse(HttpStatusCode.Forbidden, "This event name is not allowed!");
+                    break;
+            }
+
             // new GitHub.ReceiveCommand(project, eventName, payload);
 
             return new HttpResponseMessage(HttpStatusCode.Created);
