@@ -173,6 +173,7 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\InputsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="BindingModels\Projects.cs" />
     <Compile Include="ViewModels\Projects.cs" />
@@ -193,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Larmo.InputGitHub\Larmo.Input.GitHub.csproj">
+      <Project>{304ec797-045d-4b53-b394-cb4686a14d6d}</Project>
+      <Name>Larmo.Input.GitHub</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
