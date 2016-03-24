@@ -43,7 +43,11 @@
   <ItemGroup>
     <Compile Include="Commands.cs" />
     <Compile Include="EventName.cs" />
-    <Compile Include="Models.cs" />
+    <Compile Include="Models\Commit.cs" />
+    <Compile Include="Models\GitHubUser.cs" />
+    <Compile Include="Models\GitUser.cs" />
+    <Compile Include="Models\Push.cs" />
+    <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
