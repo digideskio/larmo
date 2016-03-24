@@ -196,6 +196,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Larmo.Common\Larmo.Common.csproj">
+      <Project>{df15cd82-4d2a-45f1-bcac-0d881bfc07f0}</Project>
+      <Name>Larmo.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Larmo.InputGitHub\Larmo.Input.GitHub.csproj">
       <Project>{304ec797-045d-4b53-b394-cb4686a14d6d}</Project>
       <Name>Larmo.Input.GitHub</Name>

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
+using Larmo.Common;
 using GitHub = Larmo.Input.GitHub;
 
 namespace Larmo.Api.Controllers
@@ -30,10 +30,17 @@ namespace Larmo.Api.Controllers
             }
             
             var eventName = request.Headers.GetValues(eventNameHeader).FirstOrDefault();
-            var payload = await request.Content.ReadAsStringAsync();
+            var payload = await request.Content.ReadAsStreamAsync();
             
-            // new GitHub.ReceiveCommand(project, eventName, payload);
-
+            switch (eventName)
+            {
+                case GitHub.EventName.Push:
+                    new GitHub.Commands.ReceivePush(project, payload.ToJson<GitHub.Models.Push>());
+                    break;
+                default:
+                    return Request.CreateErrorResponse(HttpStatusCode.Forbidden, "This event name is not allowed!");
+            }
+            
             return new HttpResponseMessage(HttpStatusCode.Created);
         }
     }

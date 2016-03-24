@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{304EC797-045D-4B53-B394-CB4686A14D6D}</ProjectGuid>
+    <ProjectGuid>{DF15CD82-4D2A-45F1-BCAC-0D881BFC07F0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Larmo.Input.GitHub</RootNamespace>
-    <AssemblyName>Larmo.Input.GitHub</AssemblyName>
+    <RootNamespace>Larmo.Common</RootNamespace>
+    <AssemblyName>Larmo.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -41,15 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands.cs" />
-    <Compile Include="EventName.cs" />
-    <Compile Include="Models\Commit.cs" />
-    <Compile Include="Models\GitHubUser.cs" />
-    <Compile Include="Models\GitUser.cs" />
-    <Compile Include="Models\Push.cs" />
-    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
