@@ -3,10 +3,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Larmo.Common;
 using GitHub = Larmo.Input.GitHub;
 
 namespace Larmo.Api.Controllers
@@ -32,13 +31,11 @@ namespace Larmo.Api.Controllers
             
             var eventName = request.Headers.GetValues(eventNameHeader).FirstOrDefault();
             var payload = await request.Content.ReadAsStreamAsync();
-
+            
             switch (eventName)
             {
                 case GitHub.EventName.Push:
-                    var jsonSerializer = new DataContractJsonSerializer(typeof(GitHub.Models.Push));
-                    var pushData = (GitHub.Models.Push)jsonSerializer.ReadObject(payload);
-                    new GitHub.Commands.ReceivePush(project, pushData);
+                    new GitHub.Commands.ReceivePush(project, payload.ToJson<GitHub.Models.Push>());
                     break;
                 default:
                     return Request.CreateErrorResponse(HttpStatusCode.Forbidden, "This event name is not allowed!");
