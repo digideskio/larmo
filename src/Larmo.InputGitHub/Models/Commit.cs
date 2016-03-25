@@ -19,5 +19,8 @@ namespace Larmo.Input.GitHub.Models
 
         [DataMember(Name = "author")]
         public GitUser Author { get; set; }
+
+        [DataMember(Name = "committer")]
+        public GitUser Committer { get; set; }
     }
 }
