@@ -200,6 +200,10 @@
       <Project>{df15cd82-4d2a-45f1-bcac-0d881bfc07f0}</Project>
       <Name>Larmo.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Larmo.Domain\Larmo.Domain.csproj">
+      <Project>{22463165-859B-4291-9A9C-9DD3B8BD4B40}</Project>
+      <Name>Larmo.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Larmo.InputGitHub\Larmo.Input.GitHub.csproj">
       <Project>{304ec797-045d-4b53-b394-cb4686a14d6d}</Project>
       <Name>Larmo.Input.GitHub</Name>
