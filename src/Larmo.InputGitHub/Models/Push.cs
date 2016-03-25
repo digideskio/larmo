@@ -7,7 +7,7 @@ namespace Larmo.Input.GitHub.Models
     public class Push
     {
         [DataMember(Name = "compare")]
-        public string Compare { get; set; }
+        public string CompareUrl { get; set; }
 
         [DataMember(Name = "ref")]
         public string Ref { get; set; }

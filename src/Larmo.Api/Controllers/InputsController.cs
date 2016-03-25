@@ -5,7 +5,6 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Larmo.Common;
 using GitHub = Larmo.Input.GitHub;
 
 namespace Larmo.Api.Controllers
@@ -22,24 +21,13 @@ namespace Larmo.Api.Controllers
         [HttpPost, Route("github/{project}")]
         public async Task<HttpResponseMessage> GitHubWebhook(string project, HttpRequestMessage request)
         {
-            var eventNameHeader = "HTTP_X_GITHUB_EVENT";
-
-            if (!request.Headers.Contains(eventNameHeader))
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.Forbidden, "This method is not allowed!");
-            }
+            var eventNameHeader = "HTTP_X_GITHUB_EVENT"; // @todo GitHub configuration
             
             var eventName = request.Headers.GetValues(eventNameHeader).FirstOrDefault();
             var payload = await request.Content.ReadAsStreamAsync();
-            
-            switch (eventName)
-            {
-                case GitHub.EventName.Push:
-                    new GitHub.Commands.ReceivePush(project, payload.ToJson<GitHub.Models.Push>());
-                    break;
-                default:
-                    return Request.CreateErrorResponse(HttpStatusCode.Forbidden, "This event name is not allowed!");
-            }
+
+            var message = (new GitHub.Commands.Receiver(project, eventName, payload)).GetMessage();
+            // _commandDispatcher.Execute(new AddNewMessage(message));
             
             return new HttpResponseMessage(HttpStatusCode.Created);
         }

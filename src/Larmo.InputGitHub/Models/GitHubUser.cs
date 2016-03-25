@@ -12,7 +12,7 @@ namespace Larmo.Input.GitHub.Models
         public string Login { get; set; }
 
         [DataMember(Name = "avatar_url")]
-        public string Avatar { get; set; }
+        public string AvatarUrl { get; set; }
 
         [DataMember(Name = "html_url")]
         public string ProfileUrl { get; set; }
