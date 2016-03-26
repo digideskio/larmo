@@ -3,7 +3,7 @@ using Larmo.Input.GitHub.Models;
 
 namespace Larmo.Input.GitHub.Receivers
 {
-    public class PushReceiver : IReceiver
+    public class PushReceiver : IGitHubReceiver
     {
         private readonly Push _data;
 
@@ -18,7 +18,7 @@ namespace Larmo.Input.GitHub.Receivers
             {
                 Author = new Domain.Domain.Author
                 {
-                    Name = _data.Pusher.Name,
+                    FullName = _data.Pusher.Name,
                     Email = _data.Pusher.Email
                 },
                 Input = new Domain.Domain.Input

@@ -2,7 +2,7 @@
 
 namespace Larmo.Input.GitHub
 {
-    interface IReceiver
+    interface IGitHubReceiver
     {
         Message Execute();
     }

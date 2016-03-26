@@ -6,13 +6,13 @@ using Newtonsoft.Json;
 
 namespace Larmo.Input.GitHub
 {
-    public class Receiver
+    public class GitHubReceiver
     {
         private readonly string _eventName;
         private readonly string _payload;
-        private readonly IReceiver _receiver;
+        private readonly IGitHubReceiver _receiver;
 
-        public Receiver(string eventName, string payload)
+        public GitHubReceiver(string eventName, string payload)
         {
             _eventName = eventName;
             _payload = payload;
@@ -20,7 +20,7 @@ namespace Larmo.Input.GitHub
             _receiver = GetReceiver();
         }
 
-        private IReceiver GetReceiver()
+        private IGitHubReceiver GetReceiver()
         {
             if (_eventName == EventName.Push)
             {

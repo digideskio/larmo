@@ -1,5 +1,7 @@
-﻿using System.Web.Http;
+﻿using Autofac;
 using Owin;
+using System.Web.Http;
+using System.Web.Http.Dependencies;
 
 namespace Larmo.Api
 {
@@ -7,7 +9,16 @@ namespace Larmo.Api
     {
         public void Configuration(IAppBuilder app)
         {
-            var config = new HttpConfiguration();
+            var container = DependencyInjection.SetupDependencyInjection();
+
+            var config = new HttpConfiguration
+            {
+                DependencyResolver = container.Resolve<IDependencyResolver>()
+            };
+            
+            app.UseAutofacMiddleware(container);
+            app.UseAutofacWebApi(config);
+
             app.ConfigureWebApi(config);
         }
     }
