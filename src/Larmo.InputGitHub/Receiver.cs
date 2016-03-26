@@ -1,9 +1,8 @@
 ﻿using System;
-using System.IO;
-using Larmo.Common;
 using Larmo.Domain.Domain;
 using Larmo.Input.GitHub.Receivers;
 using Larmo.Input.GitHub.Models;
+using Newtonsoft.Json;
 
 namespace Larmo.Input.GitHub
 {
@@ -11,33 +10,30 @@ namespace Larmo.Input.GitHub
     {
         private readonly string _project;
         private readonly string _eventName;
-        private readonly Stream _payload;
-        private IReceiver _receiver;
+        private readonly string _payload;
+        private readonly IReceiver _receiver;
 
-        public Receiver(string project, string eventName, Stream payload)
+        public Receiver(string project, string eventName, string payload)
         {
             _project = project;
             _eventName = eventName;
             _payload = payload;
 
-            SetupReceiver();
+            _receiver = GetReceiver();
         }
 
-        private void SetupReceiver()
+        private IReceiver GetReceiver()
         {
             if (_eventName == EventName.Push)
             {
-                _receiver = new PushReceiver(_project, _payload.JsonStreamToObject<Push>());
+                return new PushReceiver(_project, JsonConvert.DeserializeObject<Push>(_payload));
             }
+
+            throw new InvalidOperationException("Not supported GitHub event: " + _eventName);
         }
 
         public Message GetMessage()
         {
-            if (_receiver == null)
-            {
-                throw new InvalidOperationException("Not supported GitHub event: " + _eventName);
-            }
-
             return _receiver.Execute();
         }
     }

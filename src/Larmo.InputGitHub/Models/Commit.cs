@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 
 namespace Larmo.Input.GitHub.Models
 {
@@ -11,8 +12,8 @@ namespace Larmo.Input.GitHub.Models
         [DataMember(Name = "message")]
         public string Message { get; set; }
 
-        //[DataMember(Name = "timestamp")]  // @todo
-        //public DateTime Date { get; set; }
+        [DataMember(Name = "timestamp")]
+        public DateTime Date { get; set; }
 
         [DataMember(Name = "url")]
         public string Url { get; set; }

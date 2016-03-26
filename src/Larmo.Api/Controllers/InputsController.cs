@@ -24,11 +24,11 @@ namespace Larmo.Api.Controllers
             var eventNameHeader = "HTTP_X_GITHUB_EVENT"; // @todo GitHub configuration
             
             var eventName = request.Headers.GetValues(eventNameHeader).FirstOrDefault();
-            var payload = await request.Content.ReadAsStreamAsync();
+            var payload = await request.Content.ReadAsStringAsync();
 
             var message = (new GitHub.Receiver(project, eventName, payload)).GetMessage();
-            // _commandDispatcher.Execute(new AddNewMessage(message));
-            
+            // _commandDispatcher.Execute(new AddNewMessage(project, message));
+
             return new HttpResponseMessage(HttpStatusCode.Created);
         }
     }
