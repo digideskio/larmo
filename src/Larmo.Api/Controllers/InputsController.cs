@@ -26,7 +26,8 @@ namespace Larmo.Api.Controllers
             var eventName = request.Headers.GetValues(eventNameHeader).FirstOrDefault();
             var payload = await request.Content.ReadAsStringAsync();
 
-            var message = (new GitHub.Receiver(project, eventName, payload)).GetMessage();
+            var message = (new GitHub.Receiver(eventName, payload)).GetMessage();
+            // _commandDispatcher.Execute(new AddNewMessageFromGitHub(project, message));
             // _commandDispatcher.Execute(new AddNewMessage(project, message));
 
             return new HttpResponseMessage(HttpStatusCode.Created);

@@ -5,12 +5,10 @@ namespace Larmo.Input.GitHub.Receivers
 {
     public class PushReceiver : IReceiver
     {
-        private readonly string _project;
         private readonly Push _data;
 
-        public PushReceiver(string project, Push data)
+        public PushReceiver(Push data)
         {
-            _project = project;
             _data = data;
         }
 
