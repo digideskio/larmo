@@ -10,6 +10,8 @@ namespace Larmo.Infrastructure.DI
         {
             RegisterCommands(builder);
             RegisterRepositories(builder);
+
+            builder.RegisterType<TokenGenerator>().AsImplementedInterfaces();
         }
 
         private void RegisterCommands(ContainerBuilder builder)
@@ -36,6 +38,7 @@ namespace Larmo.Infrastructure.DI
         private void RegisterRepositories(ContainerBuilder builder)
         {
             builder.RegisterType<MessageRepository>().AsImplementedInterfaces();
+            builder.RegisterType<ProjectRepository>().AsImplementedInterfaces();
         }
     }
 }

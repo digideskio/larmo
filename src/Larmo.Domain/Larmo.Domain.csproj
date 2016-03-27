@@ -42,12 +42,17 @@
   <ItemGroup>
     <Compile Include="Commands.cs" />
     <Compile Include="Commands\AddNewMessage.cs" />
+    <Compile Include="Commands\AddNewProject.cs" />
     <Compile Include="Commands\Handlers\AddNewMessageHandler.cs" />
+    <Compile Include="Commands\Handlers\AddNewProjectHandler.cs" />
     <Compile Include="Domain\Author.cs" />
     <Compile Include="Domain\Input.cs" />
     <Compile Include="Domain\Message.cs" />
+    <Compile Include="Domain\Project.cs" />
+    <Compile Include="ITokenGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IMessageRepository.cs" />
+    <Compile Include="Repositories\IProjectRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
