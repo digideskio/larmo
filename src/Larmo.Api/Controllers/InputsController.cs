@@ -36,9 +36,6 @@ namespace Larmo.Api.Controllers
 
             _commandDispatcher.Execute(new AddNewMessage(project, GitHubInput.Name));
             
-            // _commandDispatcher.Execute(new AddNewMessageFromGitHub(project, message));
-            // _commandDispatcher.Execute(new AddNewMessage(project, message));
-
             return new HttpResponseMessage(HttpStatusCode.Created);
         }
     }

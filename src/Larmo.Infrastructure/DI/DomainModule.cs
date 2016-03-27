@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Larmo.Domain.Commands;
+using Larmo.Infrastructure.Repositories;
 
 namespace Larmo.Infrastructure.DI
 {
@@ -7,10 +8,11 @@ namespace Larmo.Infrastructure.DI
     {
         protected override void Load(ContainerBuilder builder)
         {
-            RegisterCommanding(builder);
+            RegisterCommands(builder);
+            RegisterRepositories(builder);
         }
 
-        private void RegisterCommanding(ContainerBuilder builder)
+        private void RegisterCommands(ContainerBuilder builder)
         {
             var commandDispatcherKey = "commandDispatcher";
 
@@ -29,6 +31,11 @@ namespace Larmo.Infrastructure.DI
             builder.RegisterAssemblyTypes(typeof(ICommand).Assembly)
                    .AsClosedTypesOf(typeof(ICommandHandler<,>))
                    .AsImplementedInterfaces();
+        }
+
+        private void RegisterRepositories(ContainerBuilder builder)
+        {
+            builder.RegisterType<MessageRepository>().AsImplementedInterfaces();
         }
     }
 }
