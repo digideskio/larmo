@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Data;
+using ServiceStack.OrmLite;
 using Larmo.Domain.Domain;
 using Larmo.Domain.Repositories;
-using ServiceStack.OrmLite;
 
 namespace Larmo.Infrastructure.Repositories
 {

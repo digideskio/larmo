@@ -214,7 +214,6 @@
     <Compile Include="Controllers\InputsController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="BindingModels\Projects.cs" />
-    <Compile Include="ViewModels\Projects.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>

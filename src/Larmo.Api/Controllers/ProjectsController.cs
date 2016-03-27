@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Results;
 using Larmo.Api.BindingModels;
-using Larmo.Api.ViewModels;
 using Larmo.Domain.Commands;
+using Larmo.Infrastructure.Queries;
+using Larmo.Infrastructure.DTO;
 
 namespace Larmo.Api.Controllers
 {
@@ -14,27 +13,24 @@ namespace Larmo.Api.Controllers
     public class ProjectsController : ApiController
     {
         private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IQueryDispatcher _queryDispatcher;
 
-        public ProjectsController(ICommandDispatcher commandDispatcher)
+        public ProjectsController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
         {
             _commandDispatcher = commandDispatcher;
+            _queryDispatcher = queryDispatcher;
         }
 
         [HttpGet, Route("")]
         public IEnumerable<Project> ProjectList()
         {
-            return new Collection<Project>()
-            {
-                new Project {Id = 1, Name = "Larmo"},
-                new Project {Id = 2, Name = "Notes"}
-            };
+            return _queryDispatcher.Execute(new GetAllProjects());
         }
 
         [HttpPost, Route("")]
         public HttpResponseMessage AddNewProject(AddNewProjectBindingModel data)
         {
             _commandDispatcher.Execute(new AddNewProject(data.Name, data.Url, data.Description));
-
             return new HttpResponseMessage(HttpStatusCode.Created);
         }
     }
