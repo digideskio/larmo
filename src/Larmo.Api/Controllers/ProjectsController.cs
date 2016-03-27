@@ -33,11 +33,6 @@ namespace Larmo.Api.Controllers
         [HttpPost, Route("")]
         public HttpResponseMessage AddNewProject(AddNewProjectBindingModel data)
         {
-            if (!ModelState.IsValid)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-
             _commandDispatcher.Execute(new AddNewProject(data.Name, data.Url, data.Description));
 
             return new HttpResponseMessage(HttpStatusCode.Created);

@@ -8,7 +8,7 @@ namespace Larmo.Api
         public static void ConfigureWebApi(this IAppBuilder app, HttpConfiguration config)
         {
             config.MapHttpAttributeRoutes();
-
+            config.Filters.Add(new ValidateModelAttribute());
             config.Formatters.JsonFormatter.SerializerSettings.DateFormatString = @"yyyy-MM-dd\THH:mm:ss";
 
             app.UseWebApi(config);
