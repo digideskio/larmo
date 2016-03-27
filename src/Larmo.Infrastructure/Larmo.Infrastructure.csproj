@@ -76,12 +76,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries.cs" />
     <Compile Include="Queries\GetAllProjects.cs" />
+    <Compile Include="Queries\GetProjectById.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="TokenGenerator.cs" />
     <Compile Include="Utilities\ConfigurationHelper.cs" />
     <Compile Include="Utilities\StringExtensions.cs" />
-    <Compile Include="DTO\Projects.cs" />
+    <Compile Include="DTO\ProjectDto.cs" />
+    <Compile Include="Utilities\TypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Larmo.Domain\Larmo.Domain.csproj">

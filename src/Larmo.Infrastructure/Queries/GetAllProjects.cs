@@ -2,22 +2,18 @@
 using System.Data;
 using System.Collections.Generic;
 using ServiceStack.OrmLite;
+using Larmo.Domain.Domain;
 using Larmo.Infrastructure.DTO;
 
 namespace Larmo.Infrastructure.Queries
 {
-    public class GetAllProjects : IQuery<IEnumerable<Project>>
+    public class GetAllProjects : IQuery<IEnumerable<ProjectDto>>
     {
-        public IEnumerable<Project> Execute(IDbConnection database)
+        public IEnumerable<ProjectDto> Execute(IDbConnection database)
         {
-            return database.Select<Domain.Domain.Project>()
+            return database.Select<Project>()
                 .OrderBy(p => p.Id)
-                .Select(p => new Project
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Url = p.Url
-                });
+                .Select(p => (ProjectDto)p);
         }
     }
 }

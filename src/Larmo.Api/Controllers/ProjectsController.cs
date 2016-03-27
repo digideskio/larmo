@@ -22,9 +22,15 @@ namespace Larmo.Api.Controllers
         }
 
         [HttpGet, Route("")]
-        public IEnumerable<Project> ProjectList()
+        public IEnumerable<ProjectDto> ProjectList()
         {
             return _queryDispatcher.Execute(new GetAllProjects());
+        }
+
+        [HttpGet, Route("{projectId:int}")]
+        public ProjectDto GetProject(int projectId)
+        {
+            return _queryDispatcher.Execute(new GetProjectById(projectId));
         }
 
         [HttpPost, Route("")]

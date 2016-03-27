@@ -208,7 +208,8 @@
   <ItemGroup>
     <Compile Include="App_Start\DependencyInjection.cs" />
     <Compile Include="App_Start\DI\HttpModule.cs" />
-    <Compile Include="App_Start\ValidateModelAttribute.cs" />
+    <Compile Include="App_Start\LarmoExceptionFilterAttribute.cs" />
+    <Compile Include="App_Start\ValidateModelFilterAttribute.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InputsController.cs" />

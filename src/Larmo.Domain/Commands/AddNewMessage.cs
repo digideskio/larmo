@@ -2,12 +2,12 @@
 {
     public class AddNewMessage : ICommand
     {
-        public readonly string ProjectKey;
+        public readonly string ProjectToken;
         public readonly string InputName;
 
-        public AddNewMessage(string projectKey, string inputName)
+        public AddNewMessage(string projectToken, string inputName)
         {
-            ProjectKey = projectKey;
+            ProjectToken = projectToken;
             InputName = inputName;
         }
     }
