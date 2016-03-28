@@ -1,6 +1,6 @@
 ﻿namespace Larmo.Input.GitHub
 {
-    public class EventName
+    public class GitHubEventName
     {
         public const string Push = "push";
     }

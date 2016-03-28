@@ -77,6 +77,7 @@
     <Compile Include="Queries.cs" />
     <Compile Include="Queries\GetAllProjects.cs" />
     <Compile Include="Queries\GetProjectById.cs" />
+    <Compile Include="Repositories\InputRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="TokenGenerator.cs" />

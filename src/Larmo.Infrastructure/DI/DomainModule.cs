@@ -39,6 +39,7 @@ namespace Larmo.Infrastructure.DI
         {
             builder.RegisterType<MessageRepository>().AsImplementedInterfaces();
             builder.RegisterType<ProjectRepository>().AsImplementedInterfaces();
+            builder.RegisterType<InputRepository>().AsImplementedInterfaces();
         }
     }
 }

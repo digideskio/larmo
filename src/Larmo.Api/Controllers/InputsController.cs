@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
@@ -31,10 +32,15 @@ namespace Larmo.Api.Controllers
         {
             var eventName = request.Headers.GetValues(GitHubInput.EventNameHeader).FirstOrDefault();
             var payload = await request.Content.ReadAsStringAsync();
+            var message = (new GitHubReceiver(eventName, payload)).Parse();
 
-            var message = (new GitHubReceiver(eventName, payload)).GetMessage();
-
-            _commandDispatcher.Execute(new AddNewMessage(project, GitHubInput.Name));
+            _commandDispatcher.Execute(new AddNewMessage(project, 
+                new AddNewMessageInput { Name = GitHubInput.Name, Type = message.Type },
+                new AddNewMessageAuthor { FullName = message.AuthorFullName, Login = message.AuthorLogin, Email = message.AuthorEmail },
+                message.Content,
+                message.Url,
+                message.Timestamp
+            ));
             
             return new HttpResponseMessage(HttpStatusCode.Created);
         }

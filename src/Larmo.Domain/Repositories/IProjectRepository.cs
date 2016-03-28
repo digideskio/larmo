@@ -6,6 +6,7 @@ namespace Larmo.Domain.Repositories
     {
         Project GetById(int projectId);
         Project GetByName(string name);
+        Project GetByToken(string token);
         void Add(Project project);
     }
 }

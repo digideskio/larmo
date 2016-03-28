@@ -13,5 +13,15 @@ namespace Larmo.Domain.Extensions
 
             return element;
         }
+
+        public static TElement EnsureExists<TElement>(this TElement element, string token = "")
+        {
+            if (element == null)
+            {
+                throw new EntityNotFoundException<TElement>(token);
+            }
+
+            return element;
+        }
     }
 }

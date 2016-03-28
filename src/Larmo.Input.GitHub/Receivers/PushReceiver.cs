@@ -1,4 +1,5 @@
-﻿using Larmo.Domain.Domain;
+﻿using System;
+using System.Linq;
 using Larmo.Input.GitHub.Models;
 
 namespace Larmo.Input.GitHub.Receivers
@@ -7,26 +8,18 @@ namespace Larmo.Input.GitHub.Receivers
     {
         private readonly Push _data;
 
+        public string AuthorFullName => _data.Pusher.Name;
+        public string AuthorEmail => _data.Pusher.Email;
+        public string AuthorLogin => _data.Pusher.Username;
+
+        public string Type => GitHubEventName.Push;
+        public string Content => "Pushed " + _data.Commits.Count() + " commit" + (_data.Commits.Count() > 1 ? "s" : "");
+        public string Url => _data.CompareUrl;
+        public DateTime Timestamp => DateTime.Now; // @todo
+
         public PushReceiver(Push data)
         {
             _data = data;
-        }
-
-        public Message Execute()
-        {
-            return new Message()
-            {
-                Author = new Domain.Domain.Author
-                {
-                    FullName = _data.Pusher.Name,
-                    Email = _data.Pusher.Email
-                },
-                Input = new Domain.Domain.Input
-                {
-                    Name = "github", // @todo
-                    Type = EventName.Push
-                }
-            };
         }
     }
 }

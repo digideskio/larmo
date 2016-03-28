@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventName.cs" />
+    <Compile Include="GitHubEventName.cs" />
     <Compile Include="GitHubInput.cs" />
     <Compile Include="IGitHubReceiver.cs" />
     <Compile Include="Models\Commit.cs" />

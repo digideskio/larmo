@@ -25,6 +25,11 @@ namespace Larmo.Infrastructure.Repositories
             return _database.Single<Project>(p => string.Equals(p.Name, name, StringComparison.CurrentCultureIgnoreCase));
         }
 
+        public Project GetByToken(string token)
+        {
+            return _database.Single<Project>(p => p.Token == token);
+        }
+
         public void Add(Project project)
         {
             _database.Insert(project);

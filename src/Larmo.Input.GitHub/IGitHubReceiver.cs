@@ -1,9 +1,16 @@
-﻿using Larmo.Domain.Domain;
+﻿using System;
 
 namespace Larmo.Input.GitHub
 {
-    interface IGitHubReceiver
+    public interface IGitHubReceiver
     {
-        Message Execute();
+        string AuthorFullName { get; }
+        string AuthorEmail { get; }
+        string AuthorLogin { get; }
+
+        string Type { get; }
+        string Content { get; }
+        string Url { get; }
+        DateTime Timestamp { get; }
     }
 }
