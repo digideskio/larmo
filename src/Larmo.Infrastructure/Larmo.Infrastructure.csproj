@@ -79,6 +79,7 @@
     <Compile Include="Queries\GetAllProjects.cs" />
     <Compile Include="Queries\GetAllSupportedInputs.cs" />
     <Compile Include="Queries\GetProjectById.cs" />
+    <Compile Include="Repositories\AuthorRepository.cs" />
     <Compile Include="Repositories\InputRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />

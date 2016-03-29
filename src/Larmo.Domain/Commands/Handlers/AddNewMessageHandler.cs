@@ -12,26 +12,42 @@ namespace Larmo.Domain.Commands.Handlers
         private readonly IMessageRepository _messageRepository;
         private readonly IProjectRepository _projectRepository;
         private readonly IInputRepository _inputRepository;
+        private readonly IAuthorRepository _authorRepository;
 
         public AddNewMessageHandler(IMessageRepository messageRepository, IProjectRepository projectRepository,
-            IInputRepository inputRepository)
+            IInputRepository inputRepository, IAuthorRepository authorRepository)
         {
             _messageRepository = messageRepository;
             _projectRepository = projectRepository;
             _inputRepository = inputRepository;
+            _authorRepository = authorRepository;
         }
 
         public void Execute(AddNewMessage command)
         {
             var project = _projectRepository.GetByToken(command.ProjectToken).EnsureExists(command.ProjectToken);
+            var author = _authorRepository.GetByEmail(command.Author.Email);
             var input = _inputRepository.GetByName(command.Input.Name).EnsureExists(command.Input.Name);
             var extras = command.Extras == null ? null : GetExtras(command.Extras);
+
+            if (author == null)
+            {
+                _authorRepository.Add(new Author
+                {
+                    Email = command.Author.Email,
+                    FullName = command.Author.FullName,
+                    Login = command.Author.Login
+                });
+
+                author = _authorRepository.GetByEmail(command.Author.Email);
+            }
 
             _messageRepository.Add(new Message
             {
                 InputType = command.Input.ToString(),
                 InputId = input.Id,
                 ProjectId = project.Id,
+                AuthorId = author.Id,
                 Content = command.Content,
                 Url = command.Url,
                 Timestamp = command.Timestamp,
