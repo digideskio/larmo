@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace Larmo.Domain.Commands
 {
@@ -10,8 +11,9 @@ namespace Larmo.Domain.Commands
         public readonly string Content;
         public readonly string Url;
         public readonly DateTime Timestamp;
+        public readonly IDictionary Extras;
 
-        public AddNewMessage(string projectToken, AddNewMessageInput input, AddNewMessageAuthor author, string content, string url, DateTime timestamp)
+        public AddNewMessage(string projectToken, AddNewMessageInput input, AddNewMessageAuthor author, string content, string url, DateTime timestamp, IDictionary extras = null)
         {
             ProjectToken = projectToken;
             Input = input;
@@ -19,6 +21,7 @@ namespace Larmo.Domain.Commands
             Content = content;
             Url = url;
             Timestamp = timestamp;
+            Extras = extras;
         }
     }
 

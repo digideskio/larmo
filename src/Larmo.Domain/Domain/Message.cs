@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using ServiceStack.DataAnnotations;
 
 namespace Larmo.Domain.Domain
 {
     public class Message
     {
+        [AutoIncrement]
         public int Id { get; set; }
         public int ProjectId { get; set; }
         public int AuthorId { get; set; }
@@ -12,5 +15,7 @@ namespace Larmo.Domain.Domain
         public string Content { get; set; }
         public string Url { get; set; }
         public DateTime Timestamp { get; set; }
+        [Reference]
+        public List<ExtraData> ExtraData { get; set; }
     }
 }

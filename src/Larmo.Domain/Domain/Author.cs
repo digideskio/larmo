@@ -1,7 +1,10 @@
-﻿namespace Larmo.Domain.Domain
+﻿using ServiceStack.DataAnnotations;
+
+namespace Larmo.Domain.Domain
 {
     public class Author
     {
+        [AutoIncrement]
         public int Id { get; set; }
         public string FullName { get; set; }
         public string Login { get; set; }

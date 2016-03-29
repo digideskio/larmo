@@ -1,7 +1,10 @@
-﻿namespace Larmo.Domain.Domain
+﻿using ServiceStack.DataAnnotations;
+
+namespace Larmo.Domain.Domain
 {
     public class Project
     {
+        [AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }

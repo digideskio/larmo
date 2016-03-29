@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace Larmo.Input.GitHub
 {
@@ -12,5 +13,7 @@ namespace Larmo.Input.GitHub
         string Content { get; }
         string Url { get; }
         DateTime Timestamp { get; }
+
+        IDictionary Extras { get; }
     }
 }

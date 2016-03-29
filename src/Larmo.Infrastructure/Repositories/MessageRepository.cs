@@ -21,7 +21,7 @@ namespace Larmo.Infrastructure.Repositories
 
         public void Add(Message message)
         {
-            _database.Insert(message);
+            _database.Save(message, true);
         }
     }
 }

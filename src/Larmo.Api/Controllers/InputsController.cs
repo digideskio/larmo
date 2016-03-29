@@ -42,7 +42,8 @@ namespace Larmo.Api.Controllers
                 new AddNewMessageAuthor { FullName = message.AuthorFullName, Login = message.AuthorLogin, Email = message.AuthorEmail },
                 message.Content,
                 message.Url,
-                message.Timestamp
+                message.Timestamp,
+                message.Extras
             ));
             
             return new HttpResponseMessage(HttpStatusCode.Created);

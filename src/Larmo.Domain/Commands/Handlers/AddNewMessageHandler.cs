@@ -1,4 +1,7 @@
-﻿using Larmo.Domain.Domain;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Larmo.Domain.Domain;
 using Larmo.Domain.Extensions;
 using Larmo.Domain.Repositories;
 
@@ -22,6 +25,7 @@ namespace Larmo.Domain.Commands.Handlers
         {
             var project = _projectRepository.GetByToken(command.ProjectToken).EnsureExists(command.ProjectToken);
             var input = _inputRepository.GetByName(command.Input.Name).EnsureExists(command.Input.Name);
+            var extras = command.Extras == null ? null : GetExtras(command.Extras);
 
             _messageRepository.Add(new Message
             {
@@ -30,8 +34,18 @@ namespace Larmo.Domain.Commands.Handlers
                 ProjectId = project.Id,
                 Content = command.Content,
                 Url = command.Url,
-                Timestamp = command.Timestamp
+                Timestamp = command.Timestamp,
+                ExtraData = extras
             });
+        }
+
+        private List<ExtraData> GetExtras(IDictionary extras)
+        {
+            return (from object key in extras.Keys select new ExtraData
+            {
+                Key = key.ToString(),
+                Value = extras[key].ToString()
+            }).ToList();
         }
     }
 }
