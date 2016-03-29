@@ -26,22 +26,10 @@ namespace Larmo.Domain.Commands.Handlers
         public void Execute(AddNewMessage command)
         {
             var project = _projectRepository.GetByToken(command.ProjectToken).EnsureExists(command.ProjectToken);
-            var author = _authorRepository.GetByEmail(command.Author.Email);
             var input = _inputRepository.GetByName(command.Input.Name).EnsureExists(command.Input.Name);
-            var extras = command.Extras == null ? null : GetExtras(command.Extras);
-
-            if (author == null)
-            {
-                _authorRepository.Add(new Author
-                {
-                    Email = command.Author.Email,
-                    FullName = command.Author.FullName,
-                    Login = command.Author.Login
-                });
-
-                author = _authorRepository.GetByEmail(command.Author.Email);
-            }
-
+            var extras = GetExtras(command.Extras);
+            var author = GetAuthor(command.Author);
+            
             _messageRepository.Add(new Message
             {
                 InputType = command.Input.ToString(),
@@ -58,10 +46,29 @@ namespace Larmo.Domain.Commands.Handlers
         private List<ExtraData> GetExtras(IDictionary extras)
         {
             return (from object key in extras.Keys select new ExtraData
+                {
+                    Key = key.ToString(),
+                    Value = extras[key].ToString()
+                }).ToList();
+        }
+
+        private Author GetAuthor(AddNewMessageAuthor messageAuthor)
+        {
+            var author = _authorRepository.GetByEmail(messageAuthor.Email);
+           
+            if (author == null)
             {
-                Key = key.ToString(),
-                Value = extras[key].ToString()
-            }).ToList();
+                _authorRepository.Add(new Author
+                {
+                    Email = messageAuthor.Email,
+                    FullName = messageAuthor.FullName,
+                    Login = messageAuthor.Login
+                });
+
+                author = _authorRepository.GetByEmail(messageAuthor.Email);
+            }
+
+            return author;
         }
     }
 }
