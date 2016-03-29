@@ -8,19 +8,19 @@ namespace Larmo.Input.GitHub
     public class GitHubReceiver
     {
         private readonly string _eventName;
-        private readonly string _payload;
+        private readonly string _json;
 
-        public GitHubReceiver(string eventName, string payload)
+        public GitHubReceiver(string eventName, string json)
         {
             _eventName = eventName;
-            _payload = payload;
+            _json = json;
         }
 
         public IGitHubReceiver Parse()
         {
-            if (_eventName == GitHubEventName.Push)
+            if (_eventName == GitHubInput.EventNamePush)
             {
-                return new PushReceiver(JsonConvert.DeserializeObject<Push>(_payload));
+                return new PushReceiver(JsonConvert.DeserializeObject<Push>(_json));
             }
 
             throw new InvalidOperationException("Not supported GitHub event: " + _eventName);

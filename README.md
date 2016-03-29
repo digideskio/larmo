@@ -8,6 +8,11 @@ This project is a PoC of a central hub that stores information from many data fe
 
 ```
 GET /projects
+GET /projects/{projectId}
+POST /projects
+
+GET /inputs
+POST /inputs/github/{projectToken}
 ```
 
 ## Build & Run
@@ -15,3 +20,10 @@ GET /projects
 Access to *Larmo*:
 
 - [http://localhost:52298](http://localhost:52298)
+
+## MVP - v0.1 TODO
+
+- support for inputs: GitHub, GitLab, Trello (basic data + extras data)
+- support for output: API
+- managment of project (add, delete, update) + list, display details
+- database migration process

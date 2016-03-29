@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
@@ -7,6 +6,8 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Larmo.Domain.Commands;
+using Larmo.Infrastructure.DTO;
+using Larmo.Infrastructure.Queries;
 using Larmo.Input.GitHub;
 
 namespace Larmo.Api.Controllers
@@ -15,16 +16,18 @@ namespace Larmo.Api.Controllers
     public class InputsController : ApiController
     {
         private readonly ICommandDispatcher _commandDispatcher;
+        private readonly IQueryDispatcher _queryDispatcher;
 
-        public InputsController(ICommandDispatcher commandDispatcher)
+        public InputsController(ICommandDispatcher commandDispatcher, IQueryDispatcher queryDispatcher)
         {
             _commandDispatcher = commandDispatcher;
+            _queryDispatcher = queryDispatcher;
         }
 
         [HttpGet, Route("")]
-        public IEnumerable<string> InputList()
+        public IEnumerable<InputDto> InputList()
         {
-            return new Collection<string>() { "github" };
+            return _queryDispatcher.Execute(new GetAllSupportedInputs());
         }
 
         [HttpPost, Route("github/{project}")]

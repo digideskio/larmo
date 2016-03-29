@@ -4,5 +4,6 @@
     {
         public static string Name = "github";
         public static string EventNameHeader = "HTTP_X_GITHUB_EVENT";
+        public static string EventNamePush = "push";
     }
 }

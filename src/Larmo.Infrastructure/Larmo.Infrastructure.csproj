@@ -73,9 +73,11 @@
     <Compile Include="CommandHandlerNotFoundException.cs" />
     <Compile Include="DI\DomainModule.cs" />
     <Compile Include="DI\InfrastructureModule.cs" />
+    <Compile Include="DTO\InputDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries.cs" />
     <Compile Include="Queries\GetAllProjects.cs" />
+    <Compile Include="Queries\GetAllSupportedInputs.cs" />
     <Compile Include="Queries\GetProjectById.cs" />
     <Compile Include="Repositories\InputRepository.cs" />
     <Compile Include="Repositories\MessageRepository.cs" />
