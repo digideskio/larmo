@@ -48,6 +48,8 @@
     <Compile Include="Commands\AddNewProject.cs" />
     <Compile Include="Commands\Handlers\AddNewMessageHandler.cs" />
     <Compile Include="Commands\Handlers\AddNewProjectHandler.cs" />
+    <Compile Include="Commands\Handlers\UpdateProjectHandler.cs" />
+    <Compile Include="Commands\UpdateProject.cs" />
     <Compile Include="Domain\Author.cs" />
     <Compile Include="Domain\ExtraData.cs" />
     <Compile Include="Domain\Input.cs" />

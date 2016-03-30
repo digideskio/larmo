@@ -7,6 +7,7 @@ namespace Larmo.Infrastructure.DTO
         public int Id { get; set; }
         public string Name { get; set; }
         public string Url { get; set; }
+        public string Description { get; set; }
 
         public static explicit operator ProjectDto(Project from)
         {
@@ -14,7 +15,8 @@ namespace Larmo.Infrastructure.DTO
             {
                 Id = from.Id,
                 Name = from.Name,
-                Url = from.Url
+                Url = from.Url,
+                Description = from.Description
             };
         }
     }

@@ -9,4 +9,12 @@ namespace Larmo.Api.BindingModels
         public string Url { get; set; }
         public string Description { get; set; }
     }
+
+    public class UpdateProjectBindingModel
+    {
+        [Required, MinLength(2), MaxLength(50)]
+        public string Name { get; set; }
+        public string Url { get; set; }
+        public string Description { get; set; }
+    }
 }

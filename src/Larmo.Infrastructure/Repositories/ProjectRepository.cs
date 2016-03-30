@@ -34,5 +34,10 @@ namespace Larmo.Infrastructure.Repositories
         {
             _database.Insert(project);
         }
+
+        public void Update(Project project)
+        {
+            _database.Save(project);
+        }
     }
 }

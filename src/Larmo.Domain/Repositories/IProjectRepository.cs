@@ -8,5 +8,6 @@ namespace Larmo.Domain.Repositories
         Project GetByName(string name);
         Project GetByToken(string token);
         void Add(Project project);
+        void Update(Project project);
     }
 }

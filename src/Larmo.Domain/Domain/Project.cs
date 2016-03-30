@@ -10,5 +10,12 @@ namespace Larmo.Domain.Domain
         public string Url { get; set; }
         public string Description { get; set; }
         public string Token { get; set; }
+
+        public void UpdateDetails(string name, string url, string description)
+        {
+            Name = name;
+            Url = url;
+            Description = description;
+        }
     }
 }

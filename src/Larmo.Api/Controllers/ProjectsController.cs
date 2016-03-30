@@ -45,5 +45,12 @@ namespace Larmo.Api.Controllers
             _commandDispatcher.Execute(new AddNewProject(data.Name, data.Url, data.Description));
             return new HttpResponseMessage(HttpStatusCode.Created);
         }
+
+        [HttpPut, Route("{projectId:int}")]
+        public HttpResponseMessage UpdateProject(int projectId, UpdateProjectBindingModel data)
+        {
+            _commandDispatcher.Execute(new UpdateProject(projectId, data.Name, data.Url, data.Description));
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
     }
 }
