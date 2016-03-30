@@ -9,7 +9,11 @@ namespace Larmo.Domain.Domain
         [AutoIncrement]
         public int Id { get; set; }
         public int ProjectId { get; set; }
+        [References(typeof(Author))]
         public int AuthorId { get; set; }
+        [Reference]
+        public Author Author { get; set; }
+
         public int InputId { get; set; }
         public string InputType { get; set; }
         public string Content { get; set; }

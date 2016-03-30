@@ -33,6 +33,12 @@ namespace Larmo.Api.Controllers
             return _queryDispatcher.Execute(new GetProjectById(projectId));
         }
 
+        [HttpGet, Route("{projectId:int}/messages")]
+        public IEnumerable<MessageDto> GetProjectMessages(int projectId)
+        {
+            return _queryDispatcher.Execute(new GetProjectMessages(projectId));
+        }
+
         [HttpPost, Route("")]
         public HttpResponseMessage AddNewProject(AddNewProjectBindingModel data)
         {
