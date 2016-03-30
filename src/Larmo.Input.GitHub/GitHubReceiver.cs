@@ -28,6 +28,11 @@ namespace Larmo.Input.GitHub
                 return new CreateReceiver(JsonConvert.DeserializeObject<Create>(_json));
             }
 
+            if (_eventName == GitHubInput.EventNamePullRequest)
+            {
+                return new PullRequestReceiver(JsonConvert.DeserializeObject<PullRequest>(_json));
+            }
+
             throw new InvalidOperationException("Not supported GitHub event: " + _eventName);
         }
     }
