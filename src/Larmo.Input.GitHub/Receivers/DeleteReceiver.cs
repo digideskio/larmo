@@ -5,16 +5,16 @@ using Larmo.Input.GitHub.Models;
 
 namespace Larmo.Input.GitHub.Receivers
 {
-    public class CreateReceiver : IGitHubReceiver
+    public class DeleteReceiver : IGitHubReceiver
     {
-        private readonly Create _data;
+        private readonly Delete _data;
 
         public string AuthorFullName => _data.Sender.Login;
         public string AuthorEmail => null;
         public string AuthorLogin => _data.Sender.Login;
 
-        public string Type => GitHubInput.EventNameCreate + "." + _data.RefType;
-        public string Content => "Created " + _data.RefType;
+        public string Type => GitHubInput.EventNameDelete + "." + _data.RefType;
+        public string Content => "Deleted " + _data.RefType;
         public string Url => null;
         public DateTime Timestamp => DateTime.Now; // @todo as a di
 
@@ -24,7 +24,7 @@ namespace Larmo.Input.GitHub.Receivers
             {"ref", _data.Ref}
         };
 
-        public CreateReceiver(Create data)
+        public DeleteReceiver(Delete data)
         {
             _data = data;
         }
