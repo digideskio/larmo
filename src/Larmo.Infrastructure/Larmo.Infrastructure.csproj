@@ -74,6 +74,7 @@
     <Compile Include="DI\DomainModule.cs" />
     <Compile Include="DI\InfrastructureModule.cs" />
     <Compile Include="DTO\AuthorDto.cs" />
+    <Compile Include="DTO\ExtraDataDto.cs" />
     <Compile Include="DTO\InputDto.cs" />
     <Compile Include="DTO\MessageDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
