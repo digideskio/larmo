@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using ServiceStack.OrmLite;
 using Larmo.Domain.Domain;
 using Larmo.Domain.Repositories;
@@ -13,15 +14,28 @@ namespace Larmo.Infrastructure.Repositories
         {
             _database = databse;
         }
-
-        public Author GetByEmail(string authorEmail)
+        
+        public Author GetByData(string email, string login, string fullName)
         {
-            return _database.Single<Author>(i => i.Email.ToLower() == authorEmail.ToLower());
+            try
+            {
+                return _database.Single<Author>(a =>
+                    a.Email == email
+                    && a.Login == login
+                    && a.FullName == fullName
+                );
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
         }
 
-        public void Add(Author author)
+        public Author Add(Author author)
         {
-            _database.Insert(author);
+            _database.Save(author);
+
+            return author;
         }
     }
 }

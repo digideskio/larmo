@@ -4,7 +4,7 @@ namespace Larmo.Domain.Repositories
 {
     public interface IAuthorRepository
     {
-        Author GetByEmail(string authorEmail);
-        void Add(Author author);
+        Author GetByData(string email, string login, string fullName);
+        Author Add(Author author);
     }
 }

@@ -48,12 +48,14 @@
     <Compile Include="GitHubInput.cs" />
     <Compile Include="IGitHubReceiver.cs" />
     <Compile Include="Models\Commit.cs" />
+    <Compile Include="Models\Create.cs" />
     <Compile Include="Models\GitHubUser.cs" />
     <Compile Include="Models\GitUser.cs" />
     <Compile Include="Models\Push.cs" />
     <Compile Include="Models\Repository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GitHubReceiver.cs" />
+    <Compile Include="Receivers\CreateReceiver.cs" />
     <Compile Include="Receivers\PushReceiver.cs" />
   </ItemGroup>
   <ItemGroup>

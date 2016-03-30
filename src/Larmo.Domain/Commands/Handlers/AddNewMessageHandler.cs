@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using Larmo.Domain.Domain;
 using Larmo.Domain.Extensions;
@@ -54,21 +55,23 @@ namespace Larmo.Domain.Commands.Handlers
 
         private Author GetAuthor(AddNewMessageAuthor messageAuthor)
         {
-            var author = _authorRepository.GetByEmail(messageAuthor.Email);
-           
-            if (author == null)
-            {
-                _authorRepository.Add(new Author
-                {
-                    Email = messageAuthor.Email,
-                    FullName = messageAuthor.FullName,
-                    Login = messageAuthor.Login
-                });
+            var email = messageAuthor.Email?.ToLower();
+            var fullName = messageAuthor.FullName?.ToLower();
+            var login = messageAuthor.Login?.ToLower();
 
-                author = _authorRepository.GetByEmail(messageAuthor.Email);
+            var author = _authorRepository.GetByData(email, login, fullName);
+
+            if (author != null)
+            {
+                return author;
             }
 
-            return author;
+            return _authorRepository.Add(new Author
+                {
+                    Email = email,
+                    FullName = fullName,
+                    Login = login
+                });    
         }
     }
 }
