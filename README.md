@@ -17,14 +17,18 @@ Yes, you can check the webapp under http://larmohub.azurewebsites.net - it's cur
 
 ## Public API
 
-```
-GET /projects
-GET /projects/{projectId}
-POST /projects
+Method | Endopoint | Description
+-------|-----------|------------
+```GET``` | ```/projects``` |
+```GET``` | ```/projects/{projectId}``` |
+```POST``` | ```/projects``` |
+```GET``` | ```/inputs``` |
+```POST``` | ```/inputs/github/{projectToken}``` |
 
-GET /inputs
-POST /inputs/github/{projectToken}
-```
+## Supported Inputs
+
+- GitHub webhooks
+  - create, delete, pull_request, push
 
 ## How to run?
 
