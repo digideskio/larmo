@@ -1,8 +1,8 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using ServiceStack.OrmLite;
 using Larmo.Domain.Domain;
 using Larmo.Domain.Repositories;
+using Larmo.Infrastructure.Utilities;
 
 namespace Larmo.Infrastructure.Repositories
 {
@@ -17,18 +17,9 @@ namespace Larmo.Infrastructure.Repositories
         
         public Author GetByData(string email, string login, string fullName)
         {
-            try
-            {
-                return _database.Single<Author>(a =>
-                    a.Email == email
-                    && a.Login == login
-                    && a.FullName == fullName
-                );
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
+            return _database.SingleOrDefault<Author>(a =>
+                a.Email == email && a.Login == login && a.FullName == fullName
+            );
         }
 
         public Author Add(Author author)

@@ -7,5 +7,6 @@
         public static string EventNamePush = "push";
         public static string EventNameCreate = "create";
         public static string EventNamePullRequest = "pull_request";
+        public static string EventNameDelete = "delete";
     }
 }

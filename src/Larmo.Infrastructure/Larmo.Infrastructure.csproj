@@ -89,6 +89,7 @@
     <Compile Include="Repositories\ProjectRepository.cs" />
     <Compile Include="TokenGenerator.cs" />
     <Compile Include="Utilities\ConfigurationHelper.cs" />
+    <Compile Include="Utilities\IDbConnectionExtensions.cs" />
     <Compile Include="Utilities\StringExtensions.cs" />
     <Compile Include="DTO\ProjectDto.cs" />
     <Compile Include="Utilities\TypeExtensions.cs" />
