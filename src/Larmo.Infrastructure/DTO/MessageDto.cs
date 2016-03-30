@@ -7,6 +7,7 @@ namespace Larmo.Infrastructure.DTO
     public class MessageDto
     {
         public int Id { get; set; }
+        public string Input { get; set; }
         public string Url { get; set; }
         public string Content { get; set; }
         public AuthorDto Author { get; set; }
@@ -17,6 +18,7 @@ namespace Larmo.Infrastructure.DTO
             return new MessageDto
             {
                 Id = from.Id,
+                Input = from.InputType,
                 Url = from.Url,
                 Content = from.Content,
                 Author = (AuthorDto)from.Author,
