@@ -14,12 +14,14 @@ namespace Larmo.Input.GitHub.Receivers
         public string AuthorLogin => _data.Sender.Login;
 
         public string Type => GitHubInput.EventNamePullRequest + "." + _data.Action;
-        public string Content => _data.PullRequestData.Title;
+        public string Content => _data.Action + " pull request";
         public string Url => _data.PullRequestData.Url;
         public DateTime Timestamp => _data.PullRequestData.CreatedAt;
 
         public IDictionary Extras => new Dictionary<string, string>
         {
+            {"pull_request.id", _data.Id.ToString()},
+            {"pull_request.title", _data.PullRequestData.Title},
             {"head", _data.PullRequestData.HeadBranch.Ref},
             {"base", _data.PullRequestData.BaseBranch.Ref},
             {"repository", _data.Repository.Name}

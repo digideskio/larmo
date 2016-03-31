@@ -8,7 +8,7 @@ namespace Larmo.Api.Controllers
         [HttpGet, Route("")]
         public string Index()
         {
-            return "Larmo API";
+            return "Larmo API v0.1";
         }
     }
 }

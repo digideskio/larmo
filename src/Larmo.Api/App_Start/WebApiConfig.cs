@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Newtonsoft.Json.Serialization;
 using Owin;
 
 namespace Larmo.Api
@@ -13,6 +14,7 @@ namespace Larmo.Api
             config.Filters.Add(new LarmoExceptionFilterAttribute());
 
             config.Formatters.JsonFormatter.SerializerSettings.DateFormatString = @"yyyy-MM-dd\THH:mm:ss";
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
             app.UseWebApi(config);
         }

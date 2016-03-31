@@ -91,7 +91,7 @@
     <Compile Include="Utilities\ConfigurationHelper.cs" />
     <Compile Include="Utilities\IDbConnectionExtensions.cs" />
     <Compile Include="Utilities\StringExtensions.cs" />
-    <Compile Include="DTO\ProjectDto.cs" />
+    <Compile Include="DTO\ProjectSimpleDto.cs" />
     <Compile Include="Utilities\TypeExtensions.cs" />
   </ItemGroup>
   <ItemGroup>

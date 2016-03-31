@@ -6,7 +6,7 @@ using Larmo.Domain.Extensions;
 
 namespace Larmo.Infrastructure.Queries
 {
-    public class GetProjectById : IQuery<ProjectDto>
+    public class GetProjectById : IQuery<ProjectDetailsDto>
     {
         private readonly int ProjectId;
 
@@ -15,9 +15,9 @@ namespace Larmo.Infrastructure.Queries
             ProjectId = projectId;
         }
 
-        public ProjectDto Execute(IDbConnection database)
+        public ProjectDetailsDto Execute(IDbConnection database)
         {
-            return (ProjectDto)database.SingleById<Project>(ProjectId).EnsureExists(ProjectId);
+            return (ProjectDetailsDto)database.SingleById<Project>(ProjectId).EnsureExists(ProjectId);
         }
     }
 }

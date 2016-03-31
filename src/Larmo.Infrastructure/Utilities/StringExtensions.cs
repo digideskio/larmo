@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace Larmo.Infrastructure.Utilities
@@ -31,6 +33,20 @@ namespace Larmo.Infrastructure.Utilities
         {
             var bytes = Encoding.GetEncoding("Cyrillic").GetBytes(txt);
             return Encoding.ASCII.GetString(bytes);
+        }
+        public static string Join(this IEnumerable<string> strings, string separator)
+        {
+            return string.Join(separator, strings.ToArray());
+        }
+
+        public static string UppercaseFirst(this string value)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
+            return char.ToUpper(value[0]) + value.Substring(1);
         }
     }
 }

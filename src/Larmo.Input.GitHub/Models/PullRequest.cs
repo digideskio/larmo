@@ -7,7 +7,7 @@ namespace Larmo.Input.GitHub.Models
     public class PullRequest
     {
         [DataMember(Name = "number")]
-        public int Id { get; set; }
+        public uint Id { get; set; }
 
         [DataMember(Name = "action")]
         public string Action { get; set; }

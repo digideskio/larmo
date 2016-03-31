@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Larmo.Domain.Domain;
 
@@ -7,6 +8,7 @@ namespace Larmo.Infrastructure.DTO
     public class MessageDto
     {
         public int Id { get; set; }
+        public DateTime Timestamp { get; set; }
         public string Input { get; set; }
         public string Url { get; set; }
         public string Content { get; set; }
@@ -18,6 +20,7 @@ namespace Larmo.Infrastructure.DTO
             return new MessageDto
             {
                 Id = from.Id,
+                Timestamp = from.Timestamp,
                 Input = from.InputType,
                 Url = from.Url,
                 Content = from.Content,
