@@ -58,6 +58,7 @@ namespace Larmo.Domain.Commands.Handlers
             var email = messageAuthor.Email?.ToLower();
             var fullName = messageAuthor.FullName?.ToLower();
             var login = messageAuthor.Login?.ToLower();
+            var url = messageAuthor.Url?.ToLower();
 
             var author = _authorRepository.GetByData(email, login, fullName);
 
@@ -70,7 +71,8 @@ namespace Larmo.Domain.Commands.Handlers
                 {
                     Email = email,
                     FullName = fullName,
-                    Login = login
+                    Login = login,
+                    Url = url
                 });    
         }
     }

@@ -8,6 +8,7 @@ namespace Larmo.Input.GitHub
         string AuthorFullName { get; }
         string AuthorEmail { get; }
         string AuthorLogin { get; }
+        string AuthorUrl { get; }
 
         string Type { get; }
         string Content { get; }

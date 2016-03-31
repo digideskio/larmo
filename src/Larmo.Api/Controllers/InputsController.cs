@@ -38,7 +38,7 @@ namespace Larmo.Api.Controllers
 
             _commandDispatcher.Execute(new AddNewMessage(project, 
                 new AddNewMessageInput { Name = GitHubInput.Name, Type = message.Type },
-                new AddNewMessageAuthor { FullName = message.AuthorFullName, Login = message.AuthorLogin, Email = message.AuthorEmail },
+                new AddNewMessageAuthor { FullName = message.AuthorFullName, Login = message.AuthorLogin, Email = message.AuthorEmail, Url = message.AuthorUrl },
                 message.Content,
                 message.Url,
                 message.Timestamp,

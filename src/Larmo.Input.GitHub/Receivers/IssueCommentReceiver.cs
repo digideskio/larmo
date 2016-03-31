@@ -12,6 +12,7 @@ namespace Larmo.Input.GitHub.Receivers
         public string AuthorFullName => _data.Comment.User.Login;
         public string AuthorEmail => null;
         public string AuthorLogin => _data.Comment.User.Login;
+        public string AuthorUrl => _data.Comment.User.ProfileUrl;
 
         public string Type => GitHubInput.EventNameIssueComment + "." + _data.Action;
         public string Content => "Added comment to issue";

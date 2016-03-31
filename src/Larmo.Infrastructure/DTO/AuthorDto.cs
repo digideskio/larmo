@@ -7,6 +7,7 @@ namespace Larmo.Infrastructure.DTO
         public string FullName {get; set; }
         public string NickName { get; set; }
         public string Email { get; set; }
+        public string Url { get; set; }
 
         public static explicit operator AuthorDto(Author from)
         {
@@ -19,7 +20,8 @@ namespace Larmo.Infrastructure.DTO
             {
                 FullName = from.FullName,
                 NickName = from.Login,
-                Email = from.Email
+                Email = from.Email,
+                Url = from.Url
             };
         }
     }

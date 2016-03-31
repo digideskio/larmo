@@ -12,6 +12,7 @@ namespace Larmo.Input.GitHub.Receivers
         public string AuthorFullName => _data.Sender.Login;
         public string AuthorEmail => null;
         public string AuthorLogin => _data.Sender.Login;
+        public string AuthorUrl => _data.Sender.ProfileUrl;
 
         public string Type => GitHubInput.EventNameCreate + "." + _data.RefType;
         public string Content => "Created " + _data.RefType;

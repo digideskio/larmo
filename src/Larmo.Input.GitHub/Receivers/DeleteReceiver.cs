@@ -12,6 +12,7 @@ namespace Larmo.Input.GitHub.Receivers
         public string AuthorFullName => _data.Sender.Login;
         public string AuthorEmail => null;
         public string AuthorLogin => _data.Sender.Login;
+        public string AuthorUrl => _data.Sender.ProfileUrl;
 
         public string Type => GitHubInput.EventNameDelete + "." + _data.RefType;
         public string Content => "Deleted " + _data.RefType;

@@ -9,9 +9,10 @@ namespace Larmo.Input.GitHub.Receivers
     {
         private readonly Push _data;
 
-        public string AuthorFullName => _data.Pusher.Name;
-        public string AuthorEmail => _data.Pusher.Email;
-        public string AuthorLogin => _data.Pusher.Username;
+        public string AuthorFullName => _data.Sender.Login;
+        public string AuthorEmail => null;
+        public string AuthorLogin => _data.Sender.Login;
+        public string AuthorUrl => _data.Sender.ProfileUrl;
 
         public string Type => GitHubInput.EventNamePush;
         public string Content => "Pushed " + _data.Commits.Count() + " commit" + (_data.Commits.Count() > 1 ? "s" : "");
