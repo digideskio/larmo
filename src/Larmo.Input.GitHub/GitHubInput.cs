@@ -10,5 +10,6 @@
         public static string EventNameDelete = "delete";
         public static string EventNameIssues = "issues";
         public static string EventNameIssueComment = "issue_comment";
+        public static string EventNameGollum = "gollum";
     }
 }

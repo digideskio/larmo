@@ -28,7 +28,7 @@ Method | Endopoint | Description
 ## Supported Inputs
 
 - GitHub webhooks
-  - create, delete, pull_request, push, issues
+  - create, delete, pull_request, push, issues, gollum
 
 ## How to run?
 

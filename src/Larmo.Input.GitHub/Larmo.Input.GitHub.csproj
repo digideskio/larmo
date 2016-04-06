@@ -53,9 +53,11 @@
     <Compile Include="Models\Delete.cs" />
     <Compile Include="Models\GitHubUser.cs" />
     <Compile Include="Models\GitUser.cs" />
+    <Compile Include="Models\Gollum.cs" />
     <Compile Include="Models\IssueComment.cs" />
     <Compile Include="Models\IssueData.cs" />
     <Compile Include="Models\Issues.cs" />
+    <Compile Include="Models\Page.cs" />
     <Compile Include="Models\PullRequest.cs" />
     <Compile Include="Models\Push.cs" />
     <Compile Include="Models\Repository.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="GitHubReceiver.cs" />
     <Compile Include="Receivers\CreateReceiver.cs" />
     <Compile Include="Receivers\DeleteReceiver.cs" />
+    <Compile Include="Receivers\GollumReciver.cs" />
     <Compile Include="Receivers\IssueCommentReceiver.cs" />
     <Compile Include="Receivers\IssuesReceiver.cs" />
     <Compile Include="Receivers\PullRequestReceiver.cs" />
