@@ -1,0 +1,1 @@
+﻿INSERT INTO `input` (`Id`, `Name`) VALUES (1, 'GitHub');

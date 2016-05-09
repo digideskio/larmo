@@ -33,6 +33,8 @@ Method | Endopoint | Description
 ## How to run?
 
 1. Create database and load table schema from ```database.sql```
-2. Setup connection string to database in "Web.config" (variable ```DATABASE_CONNECTION_STRING```)
+2. Setup connection string to database (variable ```DATABASE_CONNECTION_STRING```) in:
+   - ```Larmo.Api/Web.config```
+   - ```Larmo.Database/App.config```
 3. Build and run
 4. Access to *Larmo* - [http://localhost:52298](http://localhost:52298)

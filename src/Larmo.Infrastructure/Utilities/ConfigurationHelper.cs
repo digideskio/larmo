@@ -2,7 +2,7 @@
 
 namespace Larmo.Infrastructure.Utilities
 {
-    class ConfigurationHelper
+    public class ConfigurationHelper
     {
         public static string DatabaseConnectionString => ConfigurationManager.AppSettings["DATABASE_CONNECTION_STRING"];
     }

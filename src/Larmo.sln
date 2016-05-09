@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larmo.Domain", "Larmo.Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larmo.Infrastructure", "Larmo.Infrastructure\Larmo.Infrastructure.csproj", "{25DFFFC0-81A0-458A-9CA2-49B989DE23DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Larmo.Database", "Larmo.Database\Larmo.Database.csproj", "{B9F60161-1927-42C2-B9CA-F129D977B00A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{25DFFFC0-81A0-458A-9CA2-49B989DE23DF} = {25DFFFC0-81A0-458A-9CA2-49B989DE23DF}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +38,10 @@ Global
 		{25DFFFC0-81A0-458A-9CA2-49B989DE23DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{25DFFFC0-81A0-458A-9CA2-49B989DE23DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{25DFFFC0-81A0-458A-9CA2-49B989DE23DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F60161-1927-42C2-B9CA-F129D977B00A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F60161-1927-42C2-B9CA-F129D977B00A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F60161-1927-42C2-B9CA-F129D977B00A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9F60161-1927-42C2-B9CA-F129D977B00A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
